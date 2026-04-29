@@ -1,7 +1,4 @@
-# 🎬 Movie Recommendation System
-
-> **Data Mining (3160714) | CIPAT Mini Project**  
-> Built by **Kalpesh Nankar**
+# 🎬 Movie Recommendation System 
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)
 
