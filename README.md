@@ -1,6 +1,9 @@
 # 🎬 Movie Recommendation System 
+🌐 **Deployed on Streamlit Cloud:**
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)
+
+> **👉 [https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)**
 
 ---
 
