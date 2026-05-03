@@ -78,6 +78,12 @@ section[data-testid="stMain"]>div{padding-top:0 !important;}
 [data-testid="stHeader"],[data-testid="stToolbar"],[data-testid="stDecoration"],
 #MainMenu,footer,header{display:none !important;}
 
+/* ── stVerticalBlock padding override ── */
+[data-testid="stVerticalBlock"]{
+    padding-left:15px !important;
+    padding-right:15px !important;
+}
+
 /* ══════════════════════════════════════════════
    NAVBAR
 ══════════════════════════════════════════════ */
