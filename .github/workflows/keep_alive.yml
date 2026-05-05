@@ -4,7 +4,7 @@ on:
   schedule:
     # This runs every 60 minutes. 
     # You can change '0' to '*/30' for every 30 mins if needed.
-    - cron: '0 * * * *' 
+    - cron: '*/10 * * * *' 
   workflow_dispatch: # Allows you to run it manually for testing
 
 jobs:
