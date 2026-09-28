@@ -1,321 +1,515 @@
-# 🎬 Movie Recommendation System 
-🌐 **Deployed on Streamlit Cloud:**
+<div align="center">
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)
+# 🎬 Movie Recommendation System
 
-> **👉 [https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)**
+### Content-Based Movie Recommendations using NLP, Cosine Similarity & Streamlit
 
----
+A machine-learning-powered web application that recommends similar movies based on **plot, genres, keywords, cast, and director**, with real-time movie information and a responsive streaming-platform-inspired interface.
 
-A **content-based movie recommendation web app** built from scratch using Python and Streamlit. You select any movie from a dataset of **4,800+ films**, and the system instantly finds and displays the most similar movies — complete with live posters, ratings, genres, runtime, and plot details fetched in real time from the OMDB API.
+[**🚀 Live Demo**](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/) • [**📂 Source Code**](https://github.com/nankarkalpesh/movie-recommendation-system)
 
-The recommendation engine was trained in a Google Colab notebook using **NLP text preprocessing** (tokenization, stemming), **Bag-of-Words vectorization** (CountVectorizer with 5,000 features), and **Cosine Similarity** to measure how closely any two movies match based on their combined overview, genres, keywords, cast, and director.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-Machine%20Learning-orange)
+![NLP](https://img.shields.io/badge/NLP-Content%20Based%20Filtering-green)
 
-The notebook also explores and compares additional ML techniques — **SVM**, **Naive Bayes**, **KMeans clustering**, **Hierarchical clustering**, **PCA visualization**, and **Apriori association rules** — to provide a full data mining study alongside the core recommender.
-
-The frontend is a custom-styled, fully responsive Streamlit app with a **premium dark theme** inspired by Netflix and IMDb, supporting desktop (5 cards/row), tablet (3 cards/row), and mobile (2 cards/row) layouts with hover popups, animated cards, and progressive "Show More" loading.
-
----
-
-## 📌 Table of Contents
-
-- [Overview](#overview)
-- [Live Demo](#live-demo)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Dataset](#dataset)
-- [How It Works](#how-it-works)
-- [ML Techniques Used](#ml-techniques-used)
-- [Tech Stack](#tech-stack)
-- [Installation & Setup](#installation--setup)
-- [Running the App](#running-the-app)
-- [Screenshots](#screenshots)
-- [Research References](#research-references)
-- [Authors](#authors)
+</div>
 
 ---
 
-## 📖 Overview
+## Overview
 
-The **Movie Recommendation System** is a full-stack data mining project that recommends movies similar to a user-selected title. It combines **Natural Language Processing (NLP)**, **Content-Based Filtering** using **Cosine Similarity**, and supplementary classification algorithms (SVM, Naive Bayes) and clustering (KMeans, Hierarchical) explored during the research phase.
+The **Movie Recommendation System** is an end-to-end machine learning web application that recommends movies similar to a title selected by the user.
 
-The final model is deployed as a responsive, Netflix-style **Streamlit web application** that fetches live movie data (posters, ratings, plot, runtime) from the **OMDB API**.
+The recommendation engine is built using **Natural Language Processing (NLP)** and **content-based filtering**. Movie metadata—including overview, genres, keywords, cast, and director—is transformed into numerical feature vectors using **Bag-of-Words**, and **Cosine Similarity** is used to identify the most similar movies.
 
----
+The system works with a processed dataset of **4,806 movies** from the TMDB 5000 Movie Dataset. The trained artifacts are integrated into a responsive **Streamlit application**, while movie posters, ratings, runtime, genres, cast, and descriptions are enriched using external movie-data sources.
 
-## 🚀 Live Demo
+### What this project demonstrates
 
-🌐 **Deployed on Streamlit Cloud:**
-
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)
-
-> **👉 [https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)**
-
-**Or run locally:**
-```bash
-streamlit run app2.py
-```
-Local access at: `http://localhost:8502`
-
----
-
-## ✨ Features
-
-- 🔍 **Content-Based Recommendations** — Suggests movies based on plot, genres, cast, crew, and keywords
-- 🎭 **Movie Detail Page** — Full view with poster, rating, runtime, genres, cast, and plot
-- 🖼️ **Live Poster Fetching** — Posters loaded in parallel via OMDB API
-- 📱 **Fully Responsive UI** — Works on desktop (5 cards/row), tablet (3 cards/row), and mobile (2 cards/row)
-- 🌙 **Premium Dark Theme** — Netflix / IMDb inspired design using the Outfit font
-- 🔎 **Hover Popups** — Quick-preview card showing plot, year, runtime on hover (desktop)
-- ➕ **Load More** — Progressive disclosure showing 5 recommendations at a time up to 30
-- ⚡ **Parallel API Fetching** — `ThreadPoolExecutor` for fast multi-poster loading
-- 🎯 **Smart Fallback** — If fewer than 30 similar movies exist, pads with popular titles
+- NLP-based feature engineering
+- Content-based recommendation systems
+- Vectorization using CountVectorizer
+- Similarity measurement using Cosine Similarity
+- Data preprocessing with Pandas
+- Model serialization using Pickle
+- REST API integration
+- Concurrent API requests for improved performance
+- Responsive Streamlit application development
+- Machine learning model deployment
 
 ---
 
-## 📁 Project Structure
+## Live Application
 
-```
-Movie-Recommendation-System/
-│
-├── app2.py                        # Main Streamlit web application
-├── Final_Recommender_System.ipynb # Full ML pipeline notebook (Google Colab)
-│
-├── movies.pkl                     # Preprocessed movies DataFrame (pickle)
-├── similarity.pkl                 # Cosine similarity matrix (pickle)
-│
-├── requirements.txt               # Python dependencies
-└── README.md                      # This file
-```
+### [Launch Movie Recommendation System →](https://movie-recommendation-system-by-kalpesh-nankar.streamlit.app/)
+
+Select a movie and the application generates up to **30 related recommendations**, including posters and additional movie information.
 
 ---
 
-## 📊 Dataset
+## Application Preview
 
-| Property | Details |
+### Home Page
+
+<p align="center">
+  <img src="Home.png" alt="Movie Recommendation System Home Page" width="100%">
+</p>
+
+The home interface allows users to select a movie and generate similar recommendations.
+
+### Recommendation Results
+
+<p align="center">
+  <img src="recommendations.png" alt="Movie Recommendation Results" width="100%">
+</p>
+
+Recommendations are presented as responsive movie cards containing ratings, genres, posters, and additional movie information.
+
+---
+
+## Key Features
+
+| Feature | Description |
 |---|---|
-| **Source** | [TMDB 5000 Movie Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata) |
-| **Files** | `tmdb_5000_movies.csv` + `tmdb_5000_credits.csv` |
-| **Total Movies** | 4,806 after merge and cleaning |
-| **Movies CSV columns** | `budget`, `genres`, `id`, `keywords`, `overview`, `popularity`, `release_date`, `revenue`, `runtime`, `title`, `vote_average`, `vote_count`, and more (20 columns total) |
-| **Credits CSV columns** | `movie_id`, `title`, `cast`, `crew` |
-| **Hosted** | Google Drive (loaded via URL in notebook) |
+| **Content-Based Recommendations** | Recommends movies using similarity between plot, genres, keywords, cast, and director |
+| **NLP Processing** | Cleans and transforms textual movie metadata into machine-readable features |
+| **Cosine Similarity** | Measures similarity between movies in the vector space |
+| **Movie Details** | Displays poster, IMDb rating, genres, runtime, cast, director, and plot |
+| **Real-Time Data Enrichment** | Retrieves additional movie information using external APIs |
+| **Responsive Interface** | Optimized layouts for desktop, tablet, and mobile devices |
+| **Parallel API Requests** | Uses `ThreadPoolExecutor` to retrieve information for multiple movies concurrently |
+| **Progressive Results** | Displays recommendations incrementally through a “Show More” experience |
+| **Caching** | Uses Streamlit caching to reduce repeated data loading and API work |
+| **Fallback Handling** | Handles unavailable posters, metadata, and incomplete recommendation results |
 
 ---
 
-## ⚙️ How It Works
+## How the Recommendation System Works
 
-### Step 1 — Data Loading & Merging
-Both CSV files are loaded from Google Drive and merged on the `title` column, resulting in a unified DataFrame of 4,806 movies with 24 columns.
-
-### Step 2 — Feature Extraction
-The following fields are extracted and combined into a single `tags` column per movie:
-
+```text
+TMDB Movie Dataset
+        │
+        ▼
+Data Cleaning & Merging
+        │
+        ▼
+Feature Extraction
+        │
+        ├── Overview
+        ├── Genres
+        ├── Keywords
+        ├── Top Cast
+        └── Director
+        │
+        ▼
+Combined "tags" Feature
+        │
+        ▼
+Text Preprocessing
+        │
+        ├── Lowercasing
+        ├── Stemming
+        └── Stop-word Removal
+        │
+        ▼
+CountVectorizer
+(5,000 Features)
+        │
+        ▼
+Cosine Similarity Matrix
+        │
+        ▼
+Top Similar Movies
+        │
+        ▼
+Streamlit Web Application
+        │
+        ▼
+Movie Metadata & Posters
 ```
-tags = overview + genres + keywords + cast (top 3) + director
+
+---
+
+## Recommendation Pipeline
+
+### 1. Data Loading
+
+The project uses two files from the **TMDB 5000 Movie Dataset**:
+
+```text
+tmdb_5000_movies.csv
+tmdb_5000_credits.csv
 ```
 
-### Step 3 — Text Preprocessing (NLP Pipeline)
-1. **Lowercasing** — all tags converted to lowercase
-2. **Stemming** — Porter Stemmer reduces words to root form  
-   *(e.g. "actions" → "action", "running" → "run")*
-3. **Stop word removal** — handled inside CountVectorizer
+The datasets are merged to combine movie metadata with cast and crew information.
 
-### Step 4 — Vectorization
+---
+
+### 2. Feature Engineering
+
+The most relevant attributes for recommendation are extracted:
+
+```text
+overview
+genres
+keywords
+cast
+director
+```
+
+These attributes are combined into a single textual representation:
+
+```python
+tags = overview + genres + keywords + cast + director
+```
+
+This allows every movie to be represented by its important semantic characteristics.
+
+---
+
+### 3. NLP Preprocessing
+
+Text preprocessing includes:
+
+- Converting text to lowercase
+- Extracting structured information from genres, cast, keywords, and crew
+- Applying Porter stemming
+- Removing English stop words during vectorization
+
+For example:
+
+```text
+actions  → action
+running  → run
+connected → connect
+```
+
+---
+
+### 4. Bag-of-Words Vectorization
+
+The combined tags are transformed into numerical vectors using Scikit-learn's `CountVectorizer`.
+
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
 
-cv = CountVectorizer(max_features=5000, stop_words='english')
-vector = cv.fit_transform(new_movies['tags']).toarray()
-# Shape: (4806, 5000)
+cv = CountVectorizer(
+    max_features=5000,
+    stop_words="english"
+)
+
+vectors = cv.fit_transform(movies["tags"]).toarray()
 ```
 
-### Step 5 — Cosine Similarity
+Each movie is represented in a **5,000-dimensional feature space**.
+
+---
+
+### 5. Cosine Similarity
+
+Similarity between movie vectors is calculated using:
+
 ```python
 from sklearn.metrics.pairwise import cosine_similarity
 
-similarity = cosine_similarity(vector)
-# Shape: (4806, 4806) — pairwise similarity scores for all movies
+similarity = cosine_similarity(vectors)
 ```
 
-### Step 6 — Recommendation Function
-```python
-def recommend(movie, num=30):
-    idx = movies[movies["title"] == movie].index[0]
-    top = sorted(enumerate(similarity[idx]), reverse=True,
-                 key=lambda x: x[1])[1:num+1]
-    return [movies.iloc[i].title for i, _ in top]
-```
+Cosine similarity measures how closely two movie feature vectors point in the same direction.
 
-### Step 7 — Export Model
-```python
-import pickle
-pickle.dump(movies, open('movies.pkl', 'wb'))
-pickle.dump(similarity, open('similarity.pkl', 'wb'))
-```
+A higher similarity score means the movies share more characteristics.
 
 ---
 
-## 🧠 ML Techniques Used
+### 6. Recommendation Generation
 
-The notebook explores and compares several machine learning approaches:
+When a user selects a movie:
 
-### ✅ Core (Used in Production)
-| Technique | Purpose | Library |
-|---|---|---|
-| **CountVectorizer** | Text → numeric vectors (Bag of Words) | `sklearn` |
-| **Porter Stemmer** | NLP — word normalization | `nltk` |
-| **Cosine Similarity** | Finding similar movies | `sklearn.metrics.pairwise` |
-
-### 🔬 Explored (Research & Comparison)
-| Technique | Purpose | Notes |
-|---|---|---|
-| **SVM (Support Vector Machine)** | Movie rating classification (≥7 = good) | `sklearn.svm.SVC` |
-| **Naive Bayes (GaussianNB)** | Alternative classifier | `sklearn.naive_bayes` |
-| **KMeans Clustering** | Grouping 4,800 movies into 5 clusters | `sklearn.cluster.KMeans` |
-| **Hierarchical Clustering** | Dendrogram-based clustering on 100 movies | `scipy.cluster.hierarchy` |
-| **PCA (2D Visualization)** | Cluster visualization | `sklearn.decomposition.PCA` |
-| **Apriori / Association Rules** | Genre co-occurrence rules (e.g. Mystery → Thriller) | `mlxtend` |
-| **Train/Test Split** | 80/20 split — 3,844 train / 962 test | `sklearn.model_selection` |
-
-### Classification Labels
-```python
-movies['label'] = movies['vote_average'].apply(lambda x: 1 if x >= 7 else 0)
-# 1 = Good movie (vote_average ≥ 7)
-# 0 = Average movie (vote_average < 7)
-```
+1. The selected movie is located in the dataset.
+2. Its similarity scores against every other movie are retrieved.
+3. Scores are sorted in descending order.
+4. The selected movie itself is excluded.
+5. The most similar titles are returned.
+6. Additional movie metadata is retrieved for presentation.
 
 ---
 
-## 🛠️ Tech Stack
+## Technology Stack
 
-| Layer | Technology |
+| Category | Technologies |
 |---|---|
-| **ML & Data** | Python, Pandas, NumPy, Scikit-learn, NLTK |
-| **Visualization** | Matplotlib, Seaborn |
-| **Web App** | Streamlit |
-| **Styling** | Custom CSS (dark theme, responsive grid) |
-| **Movie Data API** | OMDB API (posters, ratings, plot, runtime) |
-| **Parallelism** | `concurrent.futures.ThreadPoolExecutor` |
-| **Model Storage** | Pickle (`.pkl` files) |
-| **Notebook** | Google Colab |
-| **Font** | Outfit (Google Fonts) |
+| **Programming Language** | Python |
+| **Data Processing** | Pandas, NumPy |
+| **Machine Learning** | Scikit-learn |
+| **NLP** | CountVectorizer, Porter Stemming |
+| **Recommendation Method** | Content-Based Filtering |
+| **Similarity Metric** | Cosine Similarity |
+| **Web Framework** | Streamlit |
+| **API Integration** | OMDb API, Wikipedia |
+| **Concurrency** | Python `concurrent.futures` |
+| **Model Storage** | Pickle |
+| **Development Environment** | Google Colab |
+| **Dataset** | TMDB 5000 Movie Dataset |
 
 ---
 
-## 📦 Installation & Setup
+## Dataset
+
+This project uses the **TMDB 5000 Movie Dataset** available on Kaggle.
+
+**Dataset:**  
+https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+
+| Property | Value |
+|---|---|
+| Movies after preprocessing | **4,806** |
+| Movie metadata source | `tmdb_5000_movies.csv` |
+| Cast & crew source | `tmdb_5000_credits.csv` |
+| Main recommendation features | Overview, genres, keywords, cast, director |
+
+The dataset contains additional information such as budget, popularity, release date, revenue, runtime, vote average, and vote count.
+
+---
+
+## Project Structure
+
+```text
+movie-recommendation-system/
+│
+├── Deployapp.py
+│   └── Streamlit web application
+│
+├── Final_Recommender_System.ipynb
+│   └── Data preprocessing, recommendation pipeline
+│       and machine learning experiments
+│
+├── movies.pkl
+│   └── Preprocessed movie dataset
+│
+├── similarity.pkl
+│   └── Precomputed cosine similarity matrix
+│
+├── tmdb_5000_movies.csv
+├── tmdb_5000_credits.csv
+│   └── Original TMDB datasets
+│
+├── Home.png
+├── recommendations.png
+│   └── Application screenshots
+│
+├── Research_Paper1.pdf
+├── Research_Paper2.pdf
+│   └── Research references
+│
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- pip
+
+Make sure you have installed:
+
+```text
+Python 3.8+
+pip
+Git
+```
 
 ### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/your-username/movie-recommendation-system.git
+git clone https://github.com/nankarkalpesh/movie-recommendation-system.git
 cd movie-recommendation-system
 ```
 
-### 2. Install Dependencies
+### 2. Create a Virtual Environment
+
+#### Windows
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+#### macOS / Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**requirements.txt:**
+### 4. Configure the OMDb API Key
+
+Create an API key from:
+
+https://www.omdbapi.com/apikey.aspx
+
+For security, store API credentials using **Streamlit Secrets** rather than committing keys directly to GitHub.
+
+Create:
+
+```text
+.streamlit/secrets.toml
 ```
-streamlit
-pandas
-numpy
-scikit-learn
-nltk
-requests
-pickle5
+
+Add:
+
+```toml
+OMDB_API_KEY = "your_api_key_here"
 ```
 
-### 3. Generate Model Files (if not present)
+Then access it in the Streamlit application with:
 
-Run the notebook `Final_Recommender_System.ipynb` in Google Colab to generate:
-- `movies.pkl`
-- `similarity.pkl`
-
-Then download both files and place them in the project root directory.
-
-### 4. Get OMDB API Key
-1. Go to [https://www.omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx)
-2. Register for a free API key
-3. In `app2.py`, replace the API key value:
 ```python
-OMDB_KEY = "your_api_key_here"
+OMDB_KEY = st.secrets["OMDB_API_KEY"]
 ```
 
----
+> Never commit `secrets.toml` or API keys to a public GitHub repository.
 
-## ▶️ Running the App
+### 5. Run the Application
 
 ```bash
-streamlit run app2.py
+streamlit run Deployapp.py
 ```
 
-The app will open at `http://localhost:8502` in your browser.
+Streamlit will display the local application URL in your terminal, typically:
+
+```text
+http://localhost:8501
+```
 
 ---
 
-## 📱 Responsive Layout
+## Model Artifacts
 
-| Device | Cards Per Row | Breakpoint |
-|---|---|---|
-| Large Desktop | 5 | > 1200px |
-| Desktop | 5 | > 992px |
-| Tablet Landscape | 5 | ≤ 992px |
-| Tablet Portrait | 3 | ≤ 768px |
-| Mobile | 2 | ≤ 576px |
-| Small Phone | 2 | ≤ 400px |
+The deployed application uses two serialized files:
 
----
+```text
+movies.pkl
+similarity.pkl
+```
 
-## 🖼️ Screenshots
+`movies.pkl` contains the processed movie information required by the application.
 
-### 🏠 Home Page — Search & Select
-> Clean hero section with movie dropdown and "Find Similar Movies" button
+`similarity.pkl` contains the precomputed pairwise cosine similarity matrix.
 
-<img src="Home.png" alt="Home Page" width="100%"/>
+These files allow the deployed application to generate recommendations without rebuilding the complete NLP pipeline on every startup.
 
 ---
 
-### 🎬 Recommendations Page — Movie Cards
-> "Because you liked..." section with live posters, ratings, genre tags, hover popup, and View Details buttons
+## Additional Machine Learning Experiments
 
-<img src="recommendations.png" alt="Recommendations Page" width="100%"/>
+Alongside the production recommendation engine, the project notebook explores additional data-mining and machine-learning techniques for academic analysis.
 
----
+| Technique | Experiment |
+|---|---|
+| **Support Vector Machine (SVM)** | Movie rating classification |
+| **Naive Bayes** | Alternative classification approach |
+| **K-Means** | Movie clustering |
+| **Hierarchical Clustering** | Similarity-based hierarchical groups |
+| **PCA** | Two-dimensional cluster visualization |
+| **Apriori Algorithm** | Genre association-rule analysis |
 
-## 📚 Research References
-
-**Research Paper 1**
-- **Title:** Movie Recommendation and Sentiment Analysis Using Machine Learning
-- **Methods:** Cosine Similarity + SVM + Naive Bayes
-- **Source:** ScienceDirect, Procedia Computer Science, 2022
-- **Link:** https://www.sciencedirect.com/science/article/pii/S2666285X22000176
-
-**Research Paper 2**
-- **Title:** Improving Movie Recommendation Systems Filtering by Exploiting User-Based Reviews
-- **Methods:** KMeans Clustering + Hierarchical + Naive Bayes
-- **Source:** PMC (PubMed Central), 2020
-- **Link:** https://pmc.ncbi.nlm.nih.gov/articles/PMC7256369/
+> These techniques are experimental analyses and are **not part of the production recommendation algorithm**. The deployed recommendation engine uses content-based filtering with CountVectorizer and Cosine Similarity.
 
 ---
 
-## 👨‍💻 Authors
+## Performance Considerations
 
-Developed as part of **Data Mining (3160714)** — CIPAT Mini Project
+Several techniques are used to improve the application experience:
+
+**Precomputed Similarity Matrix**  
+The pairwise cosine similarity matrix is calculated during preprocessing rather than every time a user requests recommendations.
+
+**Streamlit Caching**  
+Model artifacts and repeated data operations are cached to reduce unnecessary computation.
+
+**Parallel API Requests**  
+Movie information is requested concurrently using Python's `ThreadPoolExecutor`, reducing the time required to populate multiple recommendation cards.
+
+**Progressive Rendering**  
+Recommendations are displayed incrementally instead of overwhelming the interface with all results at once.
 
 ---
 
-## 📄 License
+## Limitations
 
-This project is for educational purposes under the CIPAT academic program.
+The current system is based entirely on movie metadata, so recommendations reflect **content similarity rather than individual user preferences**.
+
+Other limitations include:
+
+- No user-rating or viewing-history personalization
+- Recommendations are limited to movies available in the source dataset
+- External metadata depends on third-party API availability
+- Bag-of-Words does not fully capture semantic meaning or context
+- The current similarity matrix grows quadratically with the number of movies
+
+---
+
+## Future Improvements
+
+Potential extensions include:
+
+- Hybrid recommendation using collaborative and content-based filtering
+- User accounts and personalized recommendation history
+- Sentence embeddings or transformer-based semantic similarity
+- Approximate nearest-neighbor search for larger datasets
+- Recommendation evaluation using Precision@K, Recall@K, or NDCG
+- Improved search and filtering by genre, year, and rating
+- Containerized deployment with Docker
+- Automated tests and CI/CD integration
+
+---
+
+## Research References
+
+### Movie Recommendation and Sentiment Analysis Using Machine Learning
+
+**Methods explored:** Cosine Similarity, SVM, Naive Bayes  
+**Source:** Procedia Computer Science
+
+https://www.sciencedirect.com/science/article/pii/S2666285X22000176
+
+### Improving Movie Recommendation Systems Filtering by Exploiting User-Based Reviews
+
+**Methods explored:** Clustering, classification, and recommendation approaches  
+**Source:** PubMed Central
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC7256369/
+
+---
+
+## Academic Context
+
+Developed as a **Data Mining Mini Project** to explore recommendation systems, natural language processing, classification, clustering, association-rule mining, and machine-learning deployment.
+
+The production application focuses on **content-based movie recommendation**, while the accompanying notebook contains additional experiments conducted as part of the broader data-mining study.
+
+---
+
+## Author
+
+**Kalpesh Nankar**
+
+GitHub: [@nankarkalpesh](https://github.com/nankarkalpesh)
 
 ---
 
 <div align="center">
-  <strong>⭐ If you found this helpful, give it a star!</strong>
+
+### ⭐ If you find this project useful, consider giving the repository a star.
+
+**Built with Python, Scikit-learn and Streamlit**
+
 </div>
